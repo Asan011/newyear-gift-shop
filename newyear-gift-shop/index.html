@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#10251f" />
-  <meta name="description" content="Выбери праздничную коробку и собери свой идеальный новогодний подарок." />
-  <title>Северный сюрприз — выбери свою коробку</title>
+  <meta name="theme-color" content="#102b25" />
+  <meta name="description" content="Соберите свой новогодний подарок в магазине Северный сюрприз." />
+  <title>Северный сюрприз — собери свой подарок</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -14,79 +14,73 @@
 <body>
   <canvas id="snow" aria-hidden="true"></canvas>
 
-  <div class="garland" aria-hidden="true">
-    <svg viewBox="0 0 1440 108" preserveAspectRatio="none">
-      <path class="garland-wire" d="M-15 4 C 180 16, 220 91, 390 78 S 660 8, 810 48 S 1080 106, 1235 52 S 1390 9, 1460 20" />
-      <g class="garland-lights">
-        <circle cx="55" cy="14" r="5"/><circle cx="125" cy="34" r="5"/><circle cx="205" cy="58" r="5"/><circle cx="286" cy="75" r="5"/>
-        <circle cx="375" cy="78" r="5"/><circle cx="470" cy="63" r="5"/><circle cx="560" cy="40" r="5"/><circle cx="655" cy="30" r="5"/>
-        <circle cx="755" cy="38" r="5"/><circle cx="850" cy="56" r="5"/><circle cx="950" cy="77" r="5"/><circle cx="1050" cy="80" r="5"/>
-        <circle cx="1150" cy="65" r="5"/><circle cx="1245" cy="46" r="5"/><circle cx="1340" cy="22" r="5"/><circle cx="1410" cy="15" r="5"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="side-ornaments side-left" aria-hidden="true">
-    <span class="bauble bauble-red"></span><span class="bauble bauble-gold"></span><span class="bauble bauble-blue"></span><span class="bauble bauble-green"></span><span class="bauble bauble-pink"></span>
-  </div>
-  <div class="side-ornaments side-right" aria-hidden="true">
-    <span class="bauble bauble-blue"></span><span class="bauble bauble-pink"></span><span class="bauble bauble-gold"></span><span class="bauble bauble-red"></span><span class="bauble bauble-green"></span>
-  </div>
-
   <div class="site-shell">
     <header class="topbar">
-      <a class="brand" href="#home" id="brandHome" aria-label="Северный сюрприз — главная">
+      <a class="brand" href="#home" aria-label="Северный сюрприз — главная" id="brandHome">
         <span class="brand-mark">✳</span>
-        <span class="brand-name"><strong>северный</strong><small>сюрприз</small></span>
+        <span><strong>северный</strong><small>сюрприз</small></span>
       </a>
       <nav class="top-nav" aria-label="Основная навигация">
-        <button class="nav-step active" id="navBox" type="button"><span>01</span> Коробка</button>
-        <span class="nav-line"></span>
-        <button class="nav-step" id="navFill" type="button"><span>02</span> Наполнение</button>
+        <a href="#how" id="howLink">Как это работает</a>
+        <a href="#catalog" id="catalogLink" class="nav-catalog">Собрать подарок</a>
       </nav>
-      <div class="season-pill"><i></i> Новогодняя коллекция</div>
+      <button class="soundless-pill" type="button" aria-label="Новогодняя коллекция">
+        <span class="status-dot"></span> Новогодняя коллекция
+      </button>
     </header>
 
     <main>
-      <!-- ШАГ 1: выбор коробки -->
-      <section class="screen selection-screen active" id="home" aria-labelledby="heroTitle">
-        <div class="selection-intro">
-          <div class="eyebrow"><span>✦</span> КОЛЛЕКЦИЯ ПРАЗДНИКА 2026 <span>✦</span></div>
-          <h1 id="heroTitle">Пусть магия начнётся<br /><em>с красивой коробки.</em></h1>
-          <p>Выбери упаковку, которая понравится с первого взгляда. А дальше мы вместе наполним её маленькими радостями.</p>
+      <!-- Первый экран -->
+      <section class="screen hero-screen active" id="home" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <div class="eyebrow"><span>✦</span> Время маленьких чудес <span>✦</span></div>
+          <h1 id="heroTitle">Подарки,<br />в которых <em>живёт</em><br />волшебство.</h1>
+          <p class="hero-description">Выбери красивую коробку, наполни её любимыми вещами — и создай подарок, который запомнится.</p>
+          <button class="primary-button open-gift-btn" id="openGift" type="button">
+            Открыть коробку <span aria-hidden="true">↗</span>
+          </button>
+          <div class="hero-note"><span class="tiny-sparkle">✧</span> Каждый подарок собирается с теплом</div>
         </div>
 
-        <div class="carousel-wrap">
-          <div class="carousel-topline"><span class="carousel-caption"><i></i> ВЫБЕРИ СВОЙ СТИЛЬ</span><span class="auto-caption">Листай коллекцию <b>← →</b></span></div>
-          <button class="carousel-arrow arrow-prev" id="prevBox" type="button" aria-label="Предыдущая коробка">←</button>
-          <div class="box-carousel" id="boxCarousel" aria-live="polite"></div>
-          <button class="carousel-arrow arrow-next" id="nextBox" type="button" aria-label="Следующая коробка">→</button>
-          <div class="carousel-bottom">
-            <div class="carousel-dots" id="carouselDots" aria-label="Выбрать коробку"></div>
-            <div class="box-counter"><strong id="boxCurrent">01</strong><span>/</span><span id="boxTotal">05</span></div>
+        <div class="hero-art" aria-label="Иллюстрация новогодней подарочной коробки">
+          <div class="art-halo"></div>
+          <span class="art-spark spark-one">✦</span>
+          <span class="art-spark spark-two">✧</span>
+          <span class="art-spark spark-three">✦</span>
+          <div class="gift-shadow"></div>
+          <div class="gift-box gift-box-large" id="heroGiftBox">
+            <div class="gift-lid"><div class="lid-ribbon"></div><div class="bow"><i></i><i></i><b></b></div></div>
+            <div class="gift-body"><div class="box-ribbon"></div><div class="box-front-shine"></div><span class="box-stamp">с любовью</span></div>
           </div>
+          <div class="gift-caption"><span class="caption-line"></span> твой сюрприз начинается здесь <span class="caption-line"></span></div>
         </div>
 
-        <div class="selection-footer">
-          <div class="selection-promise"><span class="promise-icon">✧</span><span><strong>Особенная упаковка</strong><small>Каждая коробка — часть подарка</small></span></div>
-          <div class="selection-promise"><span class="promise-icon">❄</span><span><strong>Собери сам</strong><small>Выбирай только то, что любишь</small></span></div>
-          <button class="primary-button choose-box-button" id="chooseBox" type="button">Выбрать эту коробку <span>↗</span></button>
+        <div class="hero-bottom">
+          <div class="trust-item"><span>01</span><p>Выбери<br />коробку</p></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><span>02</span><p>Наполни<br />подарком</p></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><span>03</span><p>Подари<br />эмоции</p></div>
+          <div class="hero-bottom-right">Сделано для тёплых моментов <span>❄</span></div>
         </div>
       </section>
 
-      <!-- ШАГ 2: наполнение -->
+      <!-- Второй экран: сборка подарка -->
       <section class="screen builder-screen" id="catalog" aria-labelledby="builderTitle" hidden>
         <div class="builder-heading">
-          <button class="back-button" id="backHome" type="button"><span>←</span> К выбору коробки</button>
-          <div class="eyebrow"><span>✦</span> ШАГ 2 ИЗ 2 <span>✦</span></div>
-          <h2 id="builderTitle">Теперь добавим <em>волшебства</em></h2>
-          <p>Выбирай подарки, которые сделают эту коробку по-настоящему твоей.</p>
+          <button class="back-button" id="backHome" type="button"><span>←</span> Назад</button>
+          <div class="eyebrow"><span>✦</span> Шаг 2 из 2 <span>✦</span></div>
+          <h2 id="builderTitle">Собери свой <em>сюрприз</em></h2>
+          <p>Выбирай то, что хочется положить внутрь. Мы красиво всё упакуем.</p>
         </div>
 
         <div class="builder-layout">
           <section class="catalog-panel" aria-label="Товары для подарка">
             <div class="catalog-toolbar">
-              <div><span class="section-kicker">НАПОЛНЕНИЕ</span><h3>Что положим внутрь?</h3></div>
+              <div>
+                <span class="section-kicker">НАПОЛНЕНИЕ</span>
+                <h3>Что положим внутрь?</h3>
+              </div>
               <label class="search-box"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Найти подарок" aria-label="Найти подарок" /></label>
             </div>
             <div class="category-tabs" id="categoryTabs" aria-label="Категории товаров">
@@ -101,17 +95,22 @@
           </section>
 
           <aside class="gift-summary" aria-label="Ваш подарок">
-            <div class="summary-topline"><span class="section-kicker">ТВОЙ ПОДАРОК</span><span class="live-label"><i></i> Собирается</span></div>
-            <div class="chosen-box-card">
-              <div class="chosen-box-art" id="summaryBoxArt"></div>
-              <div class="chosen-box-meta"><span>ВЫБРАННАЯ КОРОБКА</span><strong id="summaryBoxName">Северное сияние</strong><button type="button" id="changeBox">Изменить коробку ↗</button></div>
+            <div class="summary-topline"><span class="section-kicker">ТВОЯ КОРОБКА</span><span class="live-label"><i></i> Собирается</span></div>
+            <div class="mini-gift-wrap">
+              <div class="mini-glow"></div>
+              <div class="gift-box mini-gift" id="summaryGiftBox">
+                <div class="gift-lid"><div class="lid-ribbon"></div><div class="bow"><i></i><i></i><b></b></div></div>
+                <div class="gift-body"><div class="box-ribbon"></div><div class="box-front-shine"></div><span class="box-stamp">для тебя</span></div>
+              </div>
             </div>
             <div class="selected-title-row"><h3>Внутри подарка</h3><span id="selectedCount">0 предметов</span></div>
-            <div class="selected-list" id="selectedList"><div class="empty-basket"><span>✧</span><p>Пока здесь пусто</p><small>Добавь что-нибудь красивое из каталога</small></div></div>
+            <div class="selected-list" id="selectedList">
+              <div class="empty-basket"><span>✧</span><p>Пока здесь пусто</p><small>Добавь что-нибудь красивое из каталога</small></div>
+            </div>
             <div class="summary-divider"></div>
             <div class="price-row"><span>Наполнение</span><strong id="subtotal">0 сом</strong></div>
-            <div class="price-row box-price-row"><span>Подарочная коробка</span><strong id="boxPrice">450 сом</strong></div>
-            <div class="total-row"><span>Итого</span><strong id="totalPrice">450 <small>сом</small></strong></div>
+            <div class="price-row box-price-row"><span>Подарочная коробка</span><strong id="boxPrice">350 сом</strong></div>
+            <div class="total-row"><span>Итого</span><strong id="totalPrice">350 <small>сом</small></strong></div>
             <button class="primary-button checkout-button" id="checkoutButton" type="button" disabled>Оформить подарок <span>↗</span></button>
             <p class="summary-footnote">♡ Упакуем с заботой и праздничным настроением</p>
           </aside>
@@ -119,25 +118,32 @@
       </section>
     </main>
 
-    <footer class="site-footer"><span>© 2026 Северный сюрприз</span><span>С теплом, от нас — вам <b>✳</b></span><a href="#home" id="footerTop">Наверх ↑</a></footer>
+    <footer class="site-footer">
+      <span>© 2026 Северный сюрприз</span>
+      <span>С теплом, от нас — вам <b>✳</b></span>
+      <a href="#home" id="footerTop">Наверх ↑</a>
+    </footer>
   </div>
 
-  <!-- Оформление заказа -->
+  <!-- Модальное окно оформления -->
   <div class="modal-backdrop" id="checkoutModal" hidden>
     <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" id="closeModal" type="button" aria-label="Закрыть">×</button>
-      <div class="eyebrow"><span>✦</span> ПОСЛЕДНИЙ ШТРИХ <span>✦</span></div>
+      <div class="eyebrow"><span>✦</span> Последний штрих <span>✦</span></div>
       <h2 id="modalTitle">Кому готовим <em>чудо?</em></h2>
       <p class="modal-intro">Оставь контакты — и мы свяжемся, чтобы уточнить детали заказа.</p>
       <form id="orderForm">
         <label>Твоё имя<input name="name" type="text" placeholder="Например, Асан" required minlength="2" /></label>
         <label>Номер телефона<input name="phone" type="tel" placeholder="+996 700 123 456" required /></label>
         <label>Пожелание к подарку <span class="optional">необязательно</span><textarea name="note" rows="3" placeholder="Добавить открытку, особую упаковку..."></textarea></label>
-        <div class="modal-total"><span>Сумма заказа</span><strong id="modalTotal">450 сом</strong></div>
+        <div class="modal-total"><span>Сумма заказа</span><strong id="modalTotal">350 сом</strong></div>
         <button class="primary-button modal-submit" type="submit">Отправить заявку <span>↗</span></button>
         <small class="privacy-note">Демо-форма: заявка пока не отправляется в магазин.</small>
       </form>
-      <div class="success-message" id="successMessage" hidden><span class="success-icon">✦</span><h3>Подарок почти готов!</h3><p>Это демонстрационная версия сайта. Подключим форму к Telegram или CRM, чтобы заявки приходили тебе.</p><button class="primary-button" id="finishOrder" type="button">Отлично!</button></div>
+      <div class="success-message" id="successMessage" hidden>
+        <span class="success-icon">✦</span><h3>Подарок почти готов!</h3><p>Это демонстрационная версия сайта. Подключим форму к Telegram или CRM, чтобы заявки приходили тебе.</p>
+        <button class="primary-button" id="finishOrder" type="button">Отлично!</button>
+      </div>
     </section>
   </div>
 
